@@ -1,4 +1,4 @@
-let canvas = document.getElementById("snake");
+let canvas = document.getElementById("snake"); /**Elemento que roda o jogo */
 let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
@@ -10,8 +10,8 @@ snake[0] = {
 let direction = "right";
 
 function criarBG(){ /*Função para desenhar e definir cor*/ 
-    context.fillStyle = "blue";
-    context.fillRect(0,0,16 * box, 16 * box); 
+    context.fillStyle = "lightgreen";
+    context.fillRect(0, 0, 16*box, 16*box); //desenha o retângulo usando x e y e a largura e altura setadas
 }
 
 function criarCobrinha(){
@@ -24,20 +24,18 @@ function criarCobrinha(){
 document.addEventListener('keydown', update);
 
 function update(event){
-    if(event.KeyCode == 37 && direction != "right") direction = "left";
-    if(event.KeyCode == 38 && direction != "down") direction = "up";
-    if(event.KeyCode == 39 && direction != "left") direction = "right";
-    if(event.KeyCode == 40 && direction != "up") direction = "down";
-
-    
+    if(event.keyCode == 37 && direction != 'right') direction = 'left';
+    if(event.keyCode == 38 && direction != 'down') direction = 'up';
+    if(event.keyCode == 39 && direction != 'left') direction = 'right';
+    if(event.keyCode == 40 && direction != 'up') direction = 'down';
 }
 
 function iniciarJogo(){
 
-    if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
-    if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
-    if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
-    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
+    if(snake[0].x > 15*box && direction == "right") snake[0].x = 0;
+    if(snake[0].x < 0 && direction == 'left') snake[0].x = 16 * box;
+    if(snake[0].y > 15*box && direction == "down") snake[0].y = 0;
+    if(snake[0].y < 0 && direction == 'up') snake[0].y = 16 * box;
     
     criarBG();
     criarCobrinha();
@@ -59,6 +57,6 @@ function iniciarJogo(){
 
     snake.unshift(newHead);
 }
-iniciarJogo();
 
-let jogo = setInterval(ininiciarJogo, 100); /**iniciando o jogo 100 milisegundos */
+
+let jogo = setInterval(iniciarJogo, 100); /**iniciando o jogo 100 milisegundos */
